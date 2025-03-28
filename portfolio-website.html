@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        
+        /* Navigation */
+        header {
+            padding: 30px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #e74c65;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #e74c65;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            padding: 50px 10%;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-content {
+            width: 50%;
+        }
+        
+        .hero-image {
+            width: 45%;
+            text-align: right;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .hero h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: #e74c65;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 10%;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 50px;
+        }
+        
+        .services-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .service-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 30px;
+            width: calc(33.333% - 20px);
+            margin-bottom: 30px;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-description {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .learn-more {
+            color: #ffffff;
+            margin-top: 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .learn-more:hover {
+            color: #e74c65;
+        }
+        
+        /* Work Section */
+        .work {
+            padding: 80px 10%;
+        }
+        
+        .work-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .work-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            margin-bottom: 30px;
+        }
+        
+        .work-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .see-more {
+            background-color: transparent;
+            border: 1px solid #e74c65;
+            color: #ffffff;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+        }
+        
+        .see-more:hover {
+            background-color: #e74c65;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .about-image {
+            width: 45%;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .about-content {
+            width: 50%;
+            padding-left: 40px;
+        }
+        
+        .about-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        
+        .tab-button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        border: none;
+        background-color: #1a1a1a;
+        color: #ffffff;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .tab-button.active {
+        background-color: #e74c65;
+    }
+
+    .tab-button:hover {
+        background-color: #c73c53;
+    }
+
+    .tab-content {
+        margin-top: 20px;
+    }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #333;
+            margin-bottom: 30px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: #e74c65;
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #e74c65;
+            bottom: -1px;
+            left: 0;
+        }
+        
+        .skills-list h4 {
+            color: #e74c65;
+            margin-bottom: 10px;
+        }
+        
+        .skills-list p {
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 10%;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .contact-info {
+            width: 30%;
+        }
+        
+        .contact-info h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            color: #e74c65;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 40px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #e74c65;
+        }
+        
+        .download-cv {
+            background-color: #e74c65;
+            color: #ffffff;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-cv:hover {
+            background-color: #c73c53;
+        }
+        
+        .contact-form {
+            width: 60%;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background-color: #1a1a1a;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        
+        textarea.form-input {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #e74c65;
+            color: #ffffff;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c73c53;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 20px 10%;
+            text-align: center;
+            color: #777;
+            border-top: 1px solid #1a1a1a;
+        }
+        
+        footer span {
+            color: #e74c65;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .service-card, .work-card {
+                width: calc(50% - 20px);
+            }
+            
+            .hero, .about, .contact {
+                flex-direction: column;
+            }
+            
+            .hero-content, .hero-image, .about-image, .about-content, .contact-info, .contact-form {
+                width: 100%;
+                padding: 0;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-card, .work-card {
+                width: 100%;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Header -->
+    <header>
+        <div class="logo"><span>अ</span>khand</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h3>Developer</h3>
+            <h1>Hi, I'm <span>अKHAND</span><br>Pratap From India 🇮🇳 </h1>
+        </div>
+        <div class="hero-image">
+            <img src="akhandProfile.png" alt="akhand profile">
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon">&lt;/&gt;</div>
+                <h3 class="service-title">Web Design</h3>
+                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla nibh, tincidunt sit amet sapien quis.</p>
+                <a href="#" class="learn-more">Learn more</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#x2B1B;</div>
+                <h3 class="service-title">Student</h3>
+                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla nibh, tincidunt sit amet sapien quis.</p>
+                <a href="#" class="learn-more">Learn more</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#x24B8;</div>
+                <h3 class="service-title">App Design</h3>
+                <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nulla nibh, tincidunt sit amet sapien quis.</p>
+                <a href="#" class="learn-more">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Work Section -->
+    <section class="work" id="portfolio">
+        <h2 class="section-title">My Work</h2>
+        <div class="work-container">
+            <div class="work-card">
+                <img src="/api/placeholder/400/300" alt="Portfolio item 1">
+            </div>
+            <div class="work-card">
+                <img src="/api/placeholder/400/300" alt="Portfolio item 2">
+            </div>
+            <div class="work-card">
+                <img src="/api/placeholder/400/300" alt="Portfolio item 3">
+            </div>
+        </div>
+        <button class="see-more">See more</button>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="myphoto.jpg" alt="About me">
+        </div>
+        <div class="about-content">
+            <h2 class="section-title">About Me</h2>
+            <p>“Hello! I’m Akhand Pratap, a passionate and dedicated web developer with expertise in creating responsive and user-friendly websites. I specialize in HTML, CSS, JavaScript, and modern frameworks like React. My goal is to build efficient, scalable, and visually appealing web applications. I love solving problems through code and continuously learning new technologies to stay ahead in the tech world. When I’m not coding, I enjoy exploring new tech trends and working on creative projects.”</p>
+            
+            <div class="tabs">
+                <button class="tab-button active" data-target="skills-list">Skills</button>
+                <button class="tab-button" data-target="experience-list">Experience</button>
+                <button class="tab-button" data-target="education-list">Education</button>
+            </div>
+            
+            <div class="tab-content skills-list active" id="skills-list">
+                <h4>DSA</h4>
+                <p>Designing Web/App interfaces</p>
+                <h4>Web Development</h4>
+                <p>C/C++</p>
+                <h4> Machine learning</h4>
+                <p>low level programming language</p>
+            </div>
+            
+            <div class="tab-content experience-list" id="experience-list" style="display: none;">
+                <h4></h4>
+                <p>................</p>
+                <h4>................</h4>
+                <p>.............</p>
+                <h4>............</h4>
+                <p>..............</p>
+            </div>
+            
+            <div class="tab-content education-list" id="education-list" style="display: none;">
+                <h4>High School + Intermediate </h4>
+                <p>Current Pursuving B.tech (NIT Patna)</p>
+                <h4>................</h4>
+                <p>...............</p>
+                <h4>............</h4>
+                <p>............</p>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h2>Contact Me</h2>
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <p>contact@example.com</p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <p>0123456789</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon">f</a>
+                <a href="#" class="social-icon">t</a>
+                <a href="www.linkedin.com/in/hunar-india-09a8a4353" class="social-icon">in</a>
+                <a href="#" class="social-icon">ig</a>
+            </div>
+            <a href="#" class="download-cv">Download CV</a>
+        </div>
+        <div class="contact-form">
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <textarea class="form-input" placeholder="Your Message"></textarea>
+            </div>
+            <button class="submit-btn">Submit</button>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Copyright © Akhand. Made with <span>❤</span></p>
+    </footer>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- JavaScript for interactivity -->
+   <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Hide all content sections
+            contents.forEach(content => content.style.display = 'none');
+            
+            // Remove 'active' class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show the clicked tab's content and set the active class
+            document.getElementById(button.dataset.target).style.display = 'block';
+            button.classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>
